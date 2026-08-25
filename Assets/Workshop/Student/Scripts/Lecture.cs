@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
+using UnityEngine.iOS;
 
 namespace Assignment
 {
@@ -15,20 +17,63 @@ namespace Assignment
             // LCT03_SyntaxLoop();
             // LCT04_LoopAndArray();
             // LCT05_Syntax2DArray();
-            // LCT06_SizeOf2DArray();
+             LCT06_SizeOf2DArray();
             // LCT07_SyntaxNestedLoop();
         }
 
         #region Lecture
 
+        public string[] ironManSuit; //Global
         public void LCT01_SyntaxArray()
         {
-            throw new System.NotImplementedException();
+            string[] _ironManSuit = new string[2]; //local
+            _ironManSuit[0] = "Ironman MkI";
+            _ironManSuit[1] = "Ironman MkII";
+
+            string _tonyStarkWear = _ironManSuit[0];
+
+            Debug.Log($"Tony Stark wear {_tonyStarkWear}");
+            Debug.Log($"Room Size {_ironManSuit.Length}");
+
+            Debug.Log(_ironManSuit[0]);
+            Debug.Log(_ironManSuit[1]);
         }
 
         public void LCT02_ArrayInitialize()
         {
-            throw new System.NotImplementedException();
+            string[] _spidermanSuits = new string[]
+            {
+                "Classic Suit",
+                "Black Suit",
+                "Iron Spider Suit"
+            };
+
+            string[] _batmanSuits = new string[2]
+            {
+                "Classic Suit",
+                "White Suit"
+            };
+
+            Debug.Log($"Room Size {_spidermanSuits.Length}");
+            for (int i = 0; i < _spidermanSuits.Length; i++)
+            {
+                Debug.Log(_spidermanSuits[i]);
+            }
+            /*
+            Debug.Log(_spidermanSuits[0]);
+            Debug.Log(_spidermanSuits[1]);
+            Debug.Log(_spidermanSuits[2]);
+            */
+
+            Debug.Log($"Room Size {_batmanSuits.Length}");
+            for (int i = 0; i < _batmanSuits.Length; i++)
+            {
+                Debug.Log(_batmanSuits[i]);
+            }
+            /*
+            Debug.Log(_batmanSuits[0]);
+            Debug.Log(_batmanSuits[1]);
+            */
         }
 
         /*
@@ -47,7 +92,17 @@ namespace Assignment
          */
         public void LCT03_SyntaxLoop()
         {
-            throw new System.NotImplementedException();
+            for (int i = 0; i < 10; i++)
+            {
+                Debug.Log($"<10 : {i}");
+            }
+            Debug.Log(" ");
+            Debug.Log("======================");
+            Debug.Log(" ");
+            for (int i = 1; i <= 10; i++)
+            {
+                Debug.Log($"<=10 : {i}");
+            }
         }
 
         /*
@@ -79,7 +134,16 @@ namespace Assignment
         public string[] lct04_ironManSuitNames;
         public void LCT04_LoopAndArray()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("====== Log by One incrementer ======");
+            for (int i = 0; 1 < lct04_ironManSuitNames.Length; i++)
+            {
+                Debug.Log(lct04_ironManSuitNames[i]);
+            }
+            Debug.Log("====== Log by Two incrementer ======");
+            for (int i = 0; 1 < lct04_ironManSuitNames.Length; i+=2)
+            {
+                Debug.Log(lct04_ironManSuitNames[i]);
+            }
         }
 
         /*
@@ -114,7 +178,33 @@ namespace Assignment
          */
         public void LCT05_Syntax2DArray()
         {
-            throw new System.NotImplementedException();
+            //int[rows, columns] my2DArray = new int[3, 3];
+            int[,] my2DArray = new int[3, 3] {
+                {1,2,3},
+                {4,5,6},
+                {7,8,9}
+            };
+            /*my2DArray[0, 0] = 1;
+            my2DArray[0, 1] = 2;
+            my2DArray[0, 2] = 3;
+
+            my2DArray[1, 0] = 4;
+            my2DArray[1, 1] = 5;
+            my2DArray[1, 2] = 6;
+
+            my2DArray[2, 0] = 7;
+            my2DArray[2, 1] = 8;
+            my2DArray[2, 2] = 9;*/
+
+            for (int r = 0; r < my2DArray.GetLength(0); r++)
+            {
+                string rowStr = "";
+                for (int c = 0; c < my2DArray.GetLength(1); c++)
+                {
+                    rowStr += my2DArray[r, c] + ",";
+                }
+                Debug.Log(rowStr);
+            }
         }
 
         /*
