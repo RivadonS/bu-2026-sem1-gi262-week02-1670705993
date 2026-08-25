@@ -46,7 +46,10 @@ namespace Assignment
         public GameObject[] as01_items;
         public void AS01_RandomItemDrop()
         {
-            throw new NotImplementedException();
+            int randomIndex = UnityEngine.Random.Range(0, as01_items.Length);
+            GameObject go = as01_items[randomIndex];
+            Instantiate(go);
+            Debug.Log($"Got item: {go.name}");
         }
 
         /*
