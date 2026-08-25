@@ -19,15 +19,37 @@ namespace Workshop.Student
         };
 
         // 1. declare Players variable
+        public GameObject[] playerTiles;
 
-        // 7. declare Exit variable 
+        // 7. declare Exit variable
+        public GameObject exitTile;
 
 
         public void Start()
         {
             // 1. random player at the position <0, 0> map
+            int randomPlayerIndex = UnityEngine.Random.Range(0, playerTiles.Length);
+            Instantiate(
+                playerTiles[randomPlayerIndex], 
+                new Vector2(0, 0), 
+                Quaternion.identity);
 
             // 2. create obstacles
+            int obstacleCount = UnityEngine.Random.Range(5, 10); //amount of obstacles
+            for (int i = 0; i < obstacleCount; i++)
+            {
+                int obsX = UnityEngine.Random.Range(0, columns);
+                int obsY = UnityEngine.Random.Range(0, rows);
+
+                // ยกเว้นจุดเริ่มต้น <0,0> และจุดทางออกขวาบนสุด <columns - 1, rows - 1>
+                if ((obsX == 0 && obsY == 0) || (obsX == columns - 1 && obsY == rows - 1))
+                {
+                    continue;
+                }
+
+                int randomWall = UnityEngine.Random.Range(0, wallTiles.Length);
+                Instantiate(wallTiles[randomWall], new Vector2(obsX, obsY), Quaternion.identity);
+            }
 
             // 3. create floor
             for (int y = 0; y < rows; y++)
@@ -97,7 +119,10 @@ namespace Workshop.Student
             }
 
             // 7. place exit
-
+            Instantiate(
+                exitTile, 
+                new Vector2(columns - 1, rows - 1), 
+                Quaternion.identity);
         }
     }
 
