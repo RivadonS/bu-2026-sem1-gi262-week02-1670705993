@@ -13,11 +13,11 @@ namespace Assignment
             // AS01_RandomItemDrop();
             // AS02_NestedLoopForCreate2DMap();
             // AS03_NestedLoopForMakingWallAround();
-             AS04_AttackEnemy();
+            // AS04_AttackEnemy();
             // AS05_DynamicIterationLoop();
             // AS06_WhileLoopAndArray();
             // AS07_HealTargetAtIndex();
-            // AS08_RandomPickingDialogue();
+             AS08_RandomPickingDialogue();
             // AS09_MultiplicationTable();
             // AS10_FindSummationFromZeroToNUsingWhileLoop();
             // AS11_SpawnEnemies();
@@ -272,18 +272,18 @@ namespace Assignment
             //index 0 enemy
             as04_enemyHP[0] -= as04_damage;
             if (as04_enemyHP[0] < 0) as04_enemyHP[0] = 0;
-            Debug.Log($"FirstEnemy hp :{as04_enemyHP[0]}");
+            Debug.Log($"FirstEnemy hp : {as04_enemyHP[0]}");
 
             //last index enemy
             int lastIndex = as04_enemyHP.Length - 1;
             as04_enemyHP[lastIndex] -= as04_damage;
             if (as04_enemyHP[lastIndex] < 0) as04_enemyHP[lastIndex] = 0;
-            Debug.Log($"LastEnemy hp :{as04_enemyHP[lastIndex]}");
+            Debug.Log($"LastEnemy hp : {as04_enemyHP[lastIndex]}");
 
             //specific target index enemy
             as04_enemyHP[as04_target] -= as04_damage;
             if (as04_enemyHP[as04_target] < 0) as04_enemyHP[as04_target] = 0;
-            Debug.Log($"TargetEnemy {as04_target} hp :{as04_enemyHP[as04_target]}");
+            Debug.Log($"TargetEnemy {as04_target} hp : {as04_enemyHP[as04_target]}");
         }
 
         /*
@@ -306,7 +306,10 @@ namespace Assignment
         public int as05_n;
         public void AS05_DynamicIterationLoop()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < as05_n; i++)
+            {
+                Debug.Log(i);
+            }
         }
 
         /*
@@ -355,7 +358,21 @@ namespace Assignment
         public string[] as06_ironManSuitNames;
         public void AS06_WhileLoopAndArray()
         {
-            throw new NotImplementedException();
+            Debug.Log("======Log by One======");
+            int i = 0;
+            while (i < as06_ironManSuitNames.Length)
+            {
+                Debug.Log(as06_ironManSuitNames[i]);
+                i++;
+            }
+
+            Debug.Log("======Log by Two======");
+            i = 0;
+            while (i < as06_ironManSuitNames.Length)
+            {
+                Debug.Log(as06_ironManSuitNames[i]);
+                i += 2;
+            }
         }
 
         /*
@@ -393,7 +410,15 @@ namespace Assignment
         public int as07_targetIndex;
         public void AS07_HealTargetAtIndex()
         {
-            throw new NotImplementedException();
+            as07_heroHPs[0] += as07_heal;
+            Debug.Log($"FirstHero hp : {as07_heroHPs[0]}");
+
+            int lastIndex = as07_heroHPs.Length - 1;
+            as07_heroHPs[lastIndex] += as07_heal;
+            Debug.Log($"LastHero hp : {as07_heroHPs[lastIndex]}");
+
+            as07_heroHPs[as07_targetIndex] += as07_heal;
+            Debug.Log($"TargetHero {as07_targetIndex} hp : {as07_heroHPs[as07_targetIndex]}");
         }
 
         /*
