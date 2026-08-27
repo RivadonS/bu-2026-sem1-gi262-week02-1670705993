@@ -13,7 +13,7 @@ namespace Assignment
             // AS01_RandomItemDrop();
             // AS02_NestedLoopForCreate2DMap();
             // AS03_NestedLoopForMakingWallAround();
-            // AS04_AttackEnemy();
+             AS04_AttackEnemy();
             // AS05_DynamicIterationLoop();
             // AS06_WhileLoopAndArray();
             // AS07_HealTargetAtIndex();
@@ -218,7 +218,23 @@ namespace Assignment
         public int as03_rows;
         public void AS03_NestedLoopForMakingWallAround()
         {
-            throw new NotImplementedException();
+            string mapPattern = ""; // Initialize an empty string to store the map pattern
+
+            for (int y = as03_rows - 1;y >= 0; y--)
+            {
+                for (int x = 0; x < as03_columns; x++)
+                {
+                    if (x == 0 || x == as03_columns - 1 || y == 0 || y == as03_rows - 1)
+                    {
+                        Instantiate(as03_wall, new Vector2(x, y), transform.rotation);
+                        mapPattern += "*"; // Append "*" for wall
+                    }
+                    else
+                    {
+                        mapPattern += " "; // Append space for empty area
+                    }
+                }
+            }
         }
 
         /*
@@ -253,7 +269,21 @@ namespace Assignment
         public int as04_target;
         public void AS04_AttackEnemy()
         {
-            throw new NotImplementedException();
+            //index 0 enemy
+            as04_enemyHP[0] -= as04_damage;
+            if (as04_enemyHP[0] < 0) as04_enemyHP[0] = 0;
+            Debug.Log($"FirstEnemy hp :{as04_enemyHP[0]}");
+
+            //last index enemy
+            int lastIndex = as04_enemyHP.Length - 1;
+            as04_enemyHP[lastIndex] -= as04_damage;
+            if (as04_enemyHP[lastIndex] < 0) as04_enemyHP[lastIndex] = 0;
+            Debug.Log($"LastEnemy hp :{as04_enemyHP[lastIndex]}");
+
+            //specific target index enemy
+            as04_enemyHP[as04_target] -= as04_damage;
+            if (as04_enemyHP[as04_target] < 0) as04_enemyHP[as04_target] = 0;
+            Debug.Log($"TargetEnemy {as04_target} hp :{as04_enemyHP[as04_target]}");
         }
 
         /*
