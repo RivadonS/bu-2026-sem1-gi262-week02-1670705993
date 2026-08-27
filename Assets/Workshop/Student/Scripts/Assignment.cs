@@ -17,10 +17,10 @@ namespace Assignment
             // AS05_DynamicIterationLoop();
             // AS06_WhileLoopAndArray();
             // AS07_HealTargetAtIndex();
-             AS08_RandomPickingDialogue();
+            // AS08_RandomPickingDialogue();
             // AS09_MultiplicationTable();
             // AS10_FindSummationFromZeroToNUsingWhileLoop();
-            // AS11_SpawnEnemies();
+             AS11_SpawnEnemies();
             // StartCoroutine(AS12_CountTime());
             // AS13_SumOfNumbersInRow();
             // AS14_SumOfNumbersInColumn();
@@ -472,7 +472,11 @@ namespace Assignment
         public int as09_n;
         public void AS09_MultiplicationTable()
         {
-            throw new NotImplementedException();
+            for (int i = 1; i <= 12; i++)
+            {
+                int result = as09_n * i;
+                Debug.Log($"{as09_n}x{i}={result}");
+            }
         }
 
         /*
@@ -494,12 +498,21 @@ namespace Assignment
          * พารามิเตอร์:
          * - n: จำนวนเต็มที่ผู้ใช้ป้อนเข้ามา
          */
+
         [Header("AS10_FindSummationFromZeroToNUsingWhileLoop")]
         public int as10_n;
         public void AS10_FindSummationFromZeroToNUsingWhileLoop()
         {
-            throw new NotImplementedException();
+            int sum = 0;
+            int i = 1;
 
+            while (i <= as10_n)
+            {
+                sum += i;
+                i++;
+            }
+
+            Debug.Log($"Sum of n from 1 to {as10_n}: {sum}");
         }
 
         /*
@@ -525,7 +538,12 @@ namespace Assignment
         public GameObject as11_enemyPrefab;
         public void AS11_SpawnEnemies()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i <= as11_enemyHPs.Length; i++)
+            {
+                GameObject enemy = Instantiate(as11_enemyPrefab, new Vector2(i + 1, 0), transform.rotation);
+                
+                Debug.Log($"Spawned Enemy at position: {i + 1}");
+            }
         }
 
         /*
