@@ -10,7 +10,7 @@ namespace Assignment
     {
         public void Start()
         {
-            AS01_RandomItemDrop();
+            // AS01_RandomItemDrop();
             // AS02_NestedLoopForCreate2DMap();
             // AS03_NestedLoopForMakingWallAround();
             // AS04_AttackEnemy();
@@ -111,7 +111,20 @@ namespace Assignment
         public int as02_rows;
         public void AS02_NestedLoopForCreate2DMap()
         {
-            throw new NotImplementedException();
+            string mapPattern = ""; // Initialize an empty string to store the map pattern
+
+            for (int y = as02_rows - 1; y >= 0; y--)
+            {
+                for (int x = 0; x < as02_columns; x++)
+                {
+                    int randomIndex = UnityEngine.Random.Range(0, as02_floorTiles.Length);
+                    GameObject obj = as02_floorTiles[randomIndex];
+                    GameObject tile = Instantiate(obj, new Vector2(x, y), transform.rotation);
+                    mapPattern += tile.name; // Append the name of the tile to the map pattern
+                }
+                mapPattern += "\n"; // Add a new line after each row
+            }
+            Debug.Log(mapPattern); // Print the entire map pattern to the console
         }
 
         /*
