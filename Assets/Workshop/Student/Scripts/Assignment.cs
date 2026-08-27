@@ -20,12 +20,12 @@ namespace Assignment
             // AS08_RandomPickingDialogue();
             // AS09_MultiplicationTable();
             // AS10_FindSummationFromZeroToNUsingWhileLoop();
-             AS11_SpawnEnemies();
+            // AS11_SpawnEnemies();
             // StartCoroutine(AS12_CountTime());
             // AS13_SumOfNumbersInRow();
             // AS14_SumOfNumbersInColumn();
             // AS15_MakeTheTriangle();
-            // AS16_MultiplicationTableOf_2_3_and_4();
+             AS16_MultiplicationTableOf_2_3_and_4();
             // EX_01_TicTacToeGame_TurnPlay();
 
         }
@@ -556,7 +556,15 @@ namespace Assignment
         public float as12_countTime;
         public IEnumerator AS12_CountTime()
         {
-            throw new NotImplementedException();
+            float timer = 0f;
+
+            while (timer < as12_countTime)
+            {
+                timer += Time.deltaTime;
+                Debug.Log($"Timer: {timer:F2} seconds");
+                yield return null; // Wait for the next frame
+            }
+            Debug.Log($"End time: {as12_countTime}.");
         }
 
         /*
@@ -614,7 +622,16 @@ namespace Assignment
         public void AS13_SumOfNumbersInRow()
         {
             var matrix = as13_matrix.Get2DArray();
-            throw new NotImplementedException();
+
+            int sum = 0; // Initialize sum to 0
+            int cols = matrix.GetLength(1); // Get the number of columns
+
+            for (int col = 0; col < cols; col++)
+            {
+                sum += matrix[as13_row, col]; // Add the value in the specified row and current column to sum
+            }
+
+            Debug.Log(sum);
         }
 
         /*
@@ -670,7 +687,17 @@ namespace Assignment
         public void AS14_SumOfNumbersInColumn()
         {
             var matrix = as14_matrix.Get2DArray();
-            throw new NotImplementedException();
+            
+            int sum = 0; // Initialize sum to 0
+
+            int rows = matrix.GetLength(0); // Get the number of rows
+
+            for (int row = 0; row < rows; row++)
+            {
+                sum += matrix[row, as14_column]; // Add the value in the current row and specified column to sum
+            }
+
+            Debug.Log(sum);
         }
 
         /*
@@ -720,7 +747,17 @@ namespace Assignment
         public int as15_size;
         public void AS15_MakeTheTriangle()
         {
-            throw new NotImplementedException();
+            //Outer loop for rows
+            for (int i = 1; i <= as15_size; i++)
+            {
+                string stars = "";
+
+                for (int j = 1; j <= i; j++)
+                {
+                    stars += "*";
+                }
+                Debug.Log(stars);
+            }
         }
 
         /*
@@ -749,7 +786,16 @@ namespace Assignment
          */
         public void AS16_MultiplicationTableOf_2_3_and_4()
         {
-            throw new NotImplementedException();
+            for (int i = 1; i <= 12; i++)
+            {
+                string line = "";
+                for (int j = 2; j <= 4; j++)
+                {
+                    line += $"{j} x {i} = {j * i}";
+                    if (j < 4) line += "\t"; // Add tab except for the last column
+                }
+                Debug.Log(line);
+            }
         }
 
         #endregion
