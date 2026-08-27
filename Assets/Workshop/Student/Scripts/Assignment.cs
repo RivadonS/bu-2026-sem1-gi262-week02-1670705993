@@ -25,8 +25,8 @@ namespace Assignment
             // AS13_SumOfNumbersInRow();
             // AS14_SumOfNumbersInColumn();
             // AS15_MakeTheTriangle();
-             AS16_MultiplicationTableOf_2_3_and_4();
-            // EX_01_TicTacToeGame_TurnPlay();
+            // AS16_MultiplicationTableOf_2_3_and_4();
+             EX_01_TicTacToeGame_TurnPlay();
 
         }
 
@@ -1018,7 +1018,69 @@ namespace Assignment
         public void EX_01_TicTacToeGame_TurnPlay()
         {
             var board = ex01_board.Get2DArray();
-            throw new NotImplementedException();
+            
+            if (ex01_row < 0 || ex01_row > 2 ||
+                ex01_column < 0 || ex01_column > 2 ||
+                !string.IsNullOrEmpty(board[ex01_row,ex01_column]))
+            {
+                PrintBoard(board);
+                Debug.Log(">> Invalid move");
+                return;
+            }
+
+            board[ex01_row, ex01_column] = ex01_playerTurn;
+            PrintBoard(board);
+
+            bool isWin = false;
+
+            //row wins
+            for (int i = 0; i < 3; i++)
+            {
+                if (board[i, 0] == ex01_playerTurn && board[i, 1] == ex01_playerTurn && board[i, 2] == ex01_playerTurn)
+                    isWin = true;
+            }
+
+            //column wins
+            for (int i = 0; i < 3; i++)
+            {
+                if (board[0, i] == ex01_playerTurn && board[1, i] == ex01_playerTurn && board[2, i] == ex01_playerTurn)
+                    isWin = true;
+            }
+
+            //diagonal wins
+            if (board[0, 0] == ex01_playerTurn && board[1, 1] == ex01_playerTurn && board[2, 2] == ex01_playerTurn)
+                isWin = true;
+            if (board[0, 2] == ex01_playerTurn && board[1, 1] == ex01_playerTurn && board[2, 0] == ex01_playerTurn)
+                isWin = true;
+
+            if (isWin)
+            {
+                Debug.Log($">> {ex01_playerTurn} wins!");
+                return;
+            }
+
+            bool isDraw = true;
+            for (int r = 0; r < 3; r++)
+            {
+                for (int c = 0; c < 3; c++)
+                {
+                    if (string.IsNullOrEmpty(board[r, c]))
+                    {
+                        isDraw = false; // ถ้ายังมีช่องว่างแสดงว่ายังไม่เสมอ
+                        break;
+                    }
+                }
+                if (!isDraw) break;
+            }
+
+            if (isDraw)
+            {
+                Debug.Log(">> Draw");
+            }
+            else
+            {
+                Debug.Log(">> Continue");
+            }
         }
         #endregion
 

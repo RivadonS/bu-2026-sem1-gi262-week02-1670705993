@@ -179,8 +179,8 @@ MonoBehaviour:
   as03_columns: 5
   as03_rows: 5
   as04_enemyHP: 0a000000140000001e000000
-  as04_damage: 5
-  as04_target: 2
+  as04_damage: 40
+  as04_target: 1
   as05_n: 3
   as06_ironManSuitNames:
   - Mark I
@@ -191,7 +191,7 @@ MonoBehaviour:
   - Mark VI
   - Mark VII
   as07_heroHPs: 0a000000140000001e000000
-  as07_heal: 5
+  as07_heal: 20
   as07_targetIndex: 1
   as08_dialogues:
   - "\u0E04\u0E38\u0E13\u0E40\u0E1B\u0E47\u0E19\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E44\u0E23\u0E1A\u0E49\u0E32\u0E07\u0E04\u0E23\u0E31\u0E1A"
@@ -206,13 +206,13 @@ MonoBehaviour:
     rows: 3
     cols: 3
     data: 010000000200000003000000040000000500000006000000070000000800000009000000
-  as13_row: 0
+  as13_row: 2
   as14_matrix:
     rows: 3
     cols: 3
     data: 010000000200000003000000040000000500000006000000070000000800000009000000
   as14_column: 1
-  as15_size: 10
+  as15_size: 5
   ex01_board:
     rows: 3
     cols: 3
